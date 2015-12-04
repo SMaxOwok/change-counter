@@ -2,16 +2,20 @@ package com.maxono.changecounter;
 
 import android.os.Bundle;
 import java.util.ArrayList;
+import java.util.Locale;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.speech.RecognizerIntent;
-import android.text.TextUtils;
+import android.speech.tts.TextToSpeech;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity implements OnClickListener {
+
+    TextToSpeech speechEngine;
 
     protected static final int REQUEST_OK = 1;
 
@@ -20,6 +24,15 @@ public class MainActivity extends Activity implements OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         findViewById(R.id.button1).setOnClickListener(this);
+
+        speechEngine = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if(status != TextToSpeech.ERROR) {
+                    speechEngine.setLanguage(Locale.US);
+                }
+            }
+        });
     }
 
     @Override
@@ -46,14 +59,19 @@ public class MainActivity extends Activity implements OnClickListener {
             ChangeCalculator mChangeCalculator = new ChangeCalculator(change);
 
             // update text to display change due
-            ((TextView)findViewById(R.id.twenties)).setText(String.valueOf(mChangeCalculator.getTwenties()) + " - $20");
-            ((TextView)findViewById(R.id.tens)).setText(String.valueOf(mChangeCalculator.getTens()));
-            ((TextView)findViewById(R.id.fives)).setText(String.valueOf(mChangeCalculator.getFives()) + " - $5");
-            ((TextView)findViewById(R.id.ones)).setText(String.valueOf(mChangeCalculator.getOnes()) + " - $1");
-            ((TextView)findViewById(R.id.quarters)).setText(String.valueOf(mChangeCalculator.getQuarters()));
-            ((TextView)findViewById(R.id.dimes)).setText(String.valueOf(mChangeCalculator.getDimes()));
-            ((TextView)findViewById(R.id.nickles)).setText(String.valueOf(mChangeCalculator.getNickles()));
-            ((TextView)findViewById(R.id.pennies)).setText(String.valueOf(mChangeCalculator.getPennies()));
+            ((TextView)findViewById(R.id.twenties)).setText(mChangeCalculator.getTwenties() + " - $20");
+            ((TextView)findViewById(R.id.tens)).setText(mChangeCalculator.getTens());
+            ((TextView)findViewById(R.id.fives)).setText(mChangeCalculator.getFives() + " - $5");
+            ((TextView)findViewById(R.id.ones)).setText(mChangeCalculator.getOnes() + " - $1");
+            ((TextView)findViewById(R.id.quarters)).setText(mChangeCalculator.getQuarters());
+            ((TextView)findViewById(R.id.dimes)).setText(mChangeCalculator.getDimes());
+            ((TextView)findViewById(R.id.nickles)).setText(mChangeCalculator.getNickles());
+            ((TextView)findViewById(R.id.pennies)).setText(mChangeCalculator.getPennies());
+
+            // say the numbers out loud
+            String speechCoins = mChangeCalculator.getQuarters() + " quarters, " + mChangeCalculator.getDimes() + " dimes, " + mChangeCalculator.getNickles() + " nickles, and " + mChangeCalculator.getPennies() + " pennies.";
+            String speechDollars = mChangeCalculator.getTwenties() + " twenties, " + mChangeCalculator.getTens() + " tens, " + mChangeCalculator.getFives() + " fives, " + mChangeCalculator.getOnes() + " ones.";
+            speechEngine.speak((speechDollars + speechCoins), TextToSpeech.QUEUE_FLUSH, null);
         }
     }
 }

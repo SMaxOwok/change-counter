@@ -73,34 +73,35 @@ public class ChangeCalculator {
         }
     }
 
-    public int getTwenties() {
-        return mTwenties;
+    public String getTwenties() {
+        return String.valueOf(mTwenties);
     }
 
-    public int getTens() {
-        return mTens;
+    public String getTens() {
+        return String.valueOf(mTens);
     }
 
-    public int getFives() {
-        return mFives;
-    }
-    public int getOnes() {
-        return mOnes;
+    public String getFives() {
+        return String.valueOf(mFives);
     }
 
-    public int getQuarters() {
-        return mQuarters;
+    public String getOnes() {
+        return String.valueOf(mOnes);
     }
 
-    public int getDimes() {
-        return mDimes;
+    public String getQuarters() {
+        return String.valueOf(mQuarters);
     }
 
-    public int getNickles() {
-        return mNickles;
+    public String getDimes() {
+        return String.valueOf(mDimes);
     }
 
-    public int getPennies() {
-        return mPennies;
+    public String getNickles() {
+        return String.valueOf(mNickles);
+    }
+
+    public String getPennies() {
+        return String.valueOf(mPennies);
     }
 }
