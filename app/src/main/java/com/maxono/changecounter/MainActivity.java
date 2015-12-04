@@ -59,19 +59,19 @@ public class MainActivity extends Activity implements OnClickListener {
             ChangeCalculator mChangeCalculator = new ChangeCalculator(change);
 
             // update text to display change due
-            ((TextView)findViewById(R.id.twenties)).setText(mChangeCalculator.getTwenties() + " - $20");
+            ((TextView)findViewById(R.id.twenties)).setText(mChangeCalculator.getTwenties());
             ((TextView)findViewById(R.id.tens)).setText(mChangeCalculator.getTens());
-            ((TextView)findViewById(R.id.fives)).setText(mChangeCalculator.getFives() + " - $5");
-            ((TextView)findViewById(R.id.ones)).setText(mChangeCalculator.getOnes() + " - $1");
+            ((TextView)findViewById(R.id.fives)).setText(mChangeCalculator.getFives());
+            ((TextView)findViewById(R.id.ones)).setText(mChangeCalculator.getOnes());
             ((TextView)findViewById(R.id.quarters)).setText(mChangeCalculator.getQuarters());
             ((TextView)findViewById(R.id.dimes)).setText(mChangeCalculator.getDimes());
             ((TextView)findViewById(R.id.nickles)).setText(mChangeCalculator.getNickles());
             ((TextView)findViewById(R.id.pennies)).setText(mChangeCalculator.getPennies());
 
             // say the numbers out loud
-            String speechCoins = mChangeCalculator.getQuarters() + " quarters, " + mChangeCalculator.getDimes() + " dimes, " + mChangeCalculator.getNickles() + " nickles, and " + mChangeCalculator.getPennies() + " pennies.";
-            String speechDollars = mChangeCalculator.getTwenties() + " twenties, " + mChangeCalculator.getTens() + " tens, " + mChangeCalculator.getFives() + " fives, " + mChangeCalculator.getOnes() + " ones.";
-            speechEngine.speak((speechDollars + speechCoins), TextToSpeech.QUEUE_FLUSH, null);
+            speechEngine.speak((mChangeCalculator.sayBills()), TextToSpeech.QUEUE_FLUSH, null);
+            speechEngine.playSilentUtterance(1000, 1, "silence");
+            speechEngine.speak((mChangeCalculator.sayCoins()), TextToSpeech.QUEUE_ADD, null);
         }
     }
 }
