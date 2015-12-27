@@ -13,7 +13,7 @@ public class ChangeCalculator {
     public Integer mOnes;
     public Integer mQuarters;
     public Integer mDimes;
-    public Integer mNickles;
+    public Integer mNickels;
     public Integer mPennies;
     public Integer remainingChange;
     public Double baseChange;
@@ -60,10 +60,10 @@ public class ChangeCalculator {
             mDimes = 0;
         }
         if ((remainingChange / 5) >= 1) {
-            mNickles = (remainingChange / 5);
-            remainingChange -= (mNickles * 5);
+            mNickels = (remainingChange / 5);
+            remainingChange -= (mNickels * 5);
         } else {
-            mNickles = 0;
+            mNickels = 0;
         }
         if (remainingChange >= 1) {
             mPennies = remainingChange;
@@ -73,34 +73,111 @@ public class ChangeCalculator {
         }
     }
 
-    public int getTwenties() {
-        return mTwenties;
+    public String getTwenties() {
+        return String.valueOf(mTwenties);
     }
 
-    public int getTens() {
-        return mTens;
+    public String getTens() {
+        return String.valueOf(mTens);
     }
 
-    public int getFives() {
-        return mFives;
-    }
-    public int getOnes() {
-        return mOnes;
+    public String getFives() {
+        return String.valueOf(mFives);
     }
 
-    public int getQuarters() {
-        return mQuarters;
+    public String getOnes() {
+        return String.valueOf(mOnes);
     }
 
-    public int getDimes() {
-        return mDimes;
+    public String getQuarters() {
+        return String.valueOf(mQuarters);
     }
 
-    public int getNickles() {
-        return mNickles;
+    public String getDimes() {
+        return String.valueOf(mDimes);
     }
 
-    public int getPennies() {
-        return mPennies;
+    public String getNickels() {
+        return String.valueOf(mNickels);
+    }
+
+    public String getPennies() {
+        return String.valueOf(mPennies);
+    }
+
+    public String updateText(String value) {
+        if (value == "0") {
+            return "";
+        } else {
+            return value;
+        }
+    }
+
+    public String sayBills() {
+        String billString = "";
+        if (Integer.parseInt(getTwenties()) > 1) {
+            billString = billString.concat(getTwenties() + " twenties, ");
+        } else if (Integer.parseInt(getTwenties()) == 1) {
+            billString = billString.concat(getTwenties() + " twenty, ");
+        } else {
+            billString = billString.concat("");
+        }
+        if (Integer.parseInt(getTens()) > 1) {
+            billString = billString.concat(getTens() + " tens, ");
+        } else if (Integer.parseInt(getTens()) == 1) {
+            billString = billString.concat(getTens() + " ten, ");
+        } else {
+            billString = billString.concat("");
+        }
+        if (Integer.parseInt(getFives()) > 1) {
+            billString = billString.concat(getFives() + " fives, ");
+        } else if (Integer.parseInt(getFives()) == 1) {
+            billString = billString.concat(getFives() + " five, ");
+        } else {
+            billString = billString.concat("");
+        }
+        if (Integer.parseInt(getOnes()) > 1) {
+            billString = billString.concat(getOnes() + " ones, ");
+        } else if (Integer.parseInt(getOnes()) == 1) {
+            billString = billString.concat(getOnes() + " one.");
+        } else {
+            billString = billString.concat("");
+        }
+
+        return billString;
+    }
+
+    public String sayCoins() {
+        String coinString = "";
+        if (Integer.parseInt(getQuarters()) > 1) {
+            coinString = coinString.concat(getQuarters() + " quarters, ");
+        } else if (Integer.parseInt(getQuarters()) == 1) {
+            coinString = coinString.concat(getQuarters() + " quarter, ");
+        } else {
+            coinString = coinString.concat("");
+        }
+        if (Integer.parseInt(getDimes()) > 1) {
+            coinString = coinString.concat(getDimes() + " dimes, ");
+        } else if (Integer.parseInt(getDimes()) == 1) {
+            coinString = coinString.concat(getDimes() + " dime, ");
+        } else {
+            coinString = coinString.concat("");
+        }
+        if (Integer.parseInt(getNickels()) > 1) {
+            coinString = coinString.concat(getNickels() + " nickles, ");
+        } else if (Integer.parseInt(getNickels()) == 1) {
+            coinString = coinString.concat(getNickels() + " nickle, ");
+        } else {
+            coinString = coinString.concat("");
+        }
+        if (Integer.parseInt(getPennies()) > 1) {
+            coinString = coinString.concat(getPennies() + " pennies, ");
+        } else if (Integer.parseInt(getPennies()) == 1) {
+            coinString = coinString.concat(getPennies() + " penny.");
+        } else {
+            coinString = coinString.concat("");
+        }
+
+        return coinString;
     }
 }

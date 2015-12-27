@@ -2,27 +2,16 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context=".MainActivity"
-    android:textAlignment="center">
+    android:textAlignment="center"
+    android:background="#a5aed6">
 
-    <TextView
-        android:id="@+id/text1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="..."
-        android:layout_marginBottom="29dp"
-        android:textSize="20sp"
-        android:layout_alignBottom="@+id/button1"
-        android:layout_toLeftOf="@+id/quarters"
-        android:layout_toStartOf="@+id/quarters"
-        android:layout_marginRight="23dp"
-        android:layout_marginEnd="23dp" />
     <ImageButton
         android:id="@+id/button1"
         android:layout_width="wrap_content"
@@ -30,49 +19,51 @@
         android:src="@drawable/button_menu"
         android:background="@null"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
-    <TextView
-        android:id="@+id/twenties"
+        android:layout_centerHorizontal="true"
+        android:paddingLeft="3dp"/>
+
+    <ImageButton
+        android:id="@+id/buttonBillReplay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="$20"
-        android:layout_alignTop="@+id/textViewBills"
+        android:src="@drawable/replay_menu"
+        android:background="@null"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="9dp"
+        android:layout_marginBottom="20dp"/>
+
+    <TextView
+        android:id="@+id/textBillReplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bills"
+        android:textSize="14sp"
+        android:layout_alignTop="@id/buttonBillReplay"
+        android:paddingTop="66dp"
+        android:paddingStart="35dp"/>
+
+    <ImageButton
+        android:id="@+id/buttonCoinsReplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/replay_menu"
+        android:background="@null"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="31dp"
-        android:layout_marginEnd="31dp"
-        android:layout_marginBottom="2dp"
-        android:textSize="26sp" />
+        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="12dp"/>
+
     <TextView
-        android:id="@+id/tens"
+        android:id="@+id/textCoinReplay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="$10"
-        android:layout_below="@+id/twenties"
-        android:layout_alignLeft="@+id/twenties"
-        android:layout_alignStart="@+id/twenties"
-        android:layout_marginBottom="2dp"
-        android:textSize="26sp" />
-    <TextView
-        android:id="@+id/fives"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="$5"
-        android:layout_below="@+id/tens"
-        android:layout_alignLeft="@+id/twenties"
-        android:layout_alignStart="@+id/twenties"
-        android:layout_marginBottom="2dp"
-        android:textSize="26sp" />
-    <TextView
-        android:id="@+id/ones"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="$1"
-        android:layout_below="@+id/fives"
-        android:layout_alignLeft="@+id/twenties"
-        android:layout_alignStart="@+id/twenties"
-        android:layout_marginBottom="2dp"
-        android:textSize="26sp" />
+        android:text="Coins"
+        android:textSize="14sp"
+        android:layout_alignTop="@id/buttonCoinsReplay"
+        android:layout_alignLeft="@id/buttonCoinsReplay"
+        android:paddingTop="65dp"
+        android:paddingLeft="22dp"/>
 
     <RelativeLayout
         android:layout_width="fill_parent"
@@ -83,23 +74,105 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/imageViewTwenty"
+            android:src="@mipmap/twenty"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:adjustViewBounds="true"
+            android:paddingStart="-67dp"
+            android:layout_marginTop="-50dp"/>
+        <TextView
+            android:id="@+id/twenties"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imageViewTwenty"
+            android:layout_alignStart="@id/imageViewTwenty"
+            android:textSize="26sp"
+            android:paddingStart="33dp"
+            android:layout_marginTop="-70dp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageViewTen"
+            android:src="@mipmap/ten"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:adjustViewBounds="true"
+            android:layout_marginStart="82dp"
+            android:layout_marginTop="15dp" />
+
+        <TextView
+            android:id="@+id/tens"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imageViewTen"
+            android:textSize="26sp"
+            android:paddingStart="117dp"
+            android:layout_marginTop="-4dp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageViewFive"
+            android:src="@mipmap/five"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:adjustViewBounds="true"
+            android:layout_marginStart="167dp"
+            android:layout_marginTop="15dp" />
+
+        <TextView
+            android:id="@+id/fives"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imageViewFive"
+            android:textSize="26sp"
+            android:paddingStart="201dp"
+            android:layout_marginTop="-4dp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageViewOne"
+            android:src="@mipmap/one"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:adjustViewBounds="true"
+            android:layout_marginStart="248dp"
+            android:layout_marginTop="15dp"
+            android:scaleType="matrix"
+            android:layout_alignBottom="@+id/imageViewFive" />
+
+        <TextView
+            android:id="@+id/ones"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imageViewOne"
+            android:textSize="26sp"
+            android:paddingStart="282dp"
+            android:layout_marginTop="-4dp"
+            android:layout_marginBottom="100dp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:id="@+id/imageViewQuarter"
             android:src="@mipmap/quarter"
             android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:paddingTop="70dp"
-            android:paddingStart="8dp" />
+            android:paddingTop="85dp"
+            android:layout_marginStart="8dp" />
 
         <TextView
             android:id="@+id/quarters"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0"
             android:textSize="26sp"
             android:layout_below="@+id/imageViewQuarter"
             android:layout_alignStart="@id/imageViewQuarter"
-            android:paddingStart="42dp"/>
+            android:paddingStart="34dp"/>
 
         <ImageView
             android:layout_width="wrap_content"
@@ -108,17 +181,16 @@
             android:src="@mipmap/dime"
             android:layout_alignBottom="@+id/imageViewQuarter"
             android:layout_toEndOf="@+id/imageViewQuarter"
-            android:paddingStart="13dp" />
+            android:layout_marginStart="13dp" />
 
         <TextView
             android:id="@+id/dimes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0"
             android:textSize="26sp"
             android:layout_below="@+id/imageViewDime"
             android:layout_alignStart="@id/imageViewDime"
-            android:paddingStart="30dp"/>
+            android:paddingStart="17dp"/>
 
         <ImageView
             android:layout_width="wrap_content"
@@ -127,17 +199,16 @@
             android:src="@mipmap/nickle"
             android:layout_alignBottom="@+id/imageViewQuarter"
             android:layout_toEndOf="@+id/imageViewDime"
-            android:paddingStart="12dp" />
+            android:layout_marginStart="12dp" />
 
         <TextView
             android:id="@+id/nickles"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0"
             android:textSize="26sp"
             android:layout_below="@+id/imageViewNickle"
             android:layout_alignStart="@id/imageViewNickle"
-            android:paddingStart="37dp"/>
+            android:paddingStart="25dp"/>
 
         <ImageView
             android:layout_width="wrap_content"
@@ -146,17 +217,16 @@
             android:src="@mipmap/penny"
             android:layout_alignBottom="@+id/imageViewQuarter"
             android:layout_toEndOf="@+id/imageViewNickle"
-            android:paddingStart="13dp" />
+            android:layout_marginStart="13dp" />
 
         <TextView
             android:id="@+id/pennies"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0"
             android:textSize="26sp"
             android:layout_below="@+id/imageViewPenny"
             android:layout_alignStart="@id/imageViewPenny"
-            android:paddingStart="33dp" />
+            android:paddingStart="21dp" />
     </RelativeLayout>
 
 </RelativeLayout>
