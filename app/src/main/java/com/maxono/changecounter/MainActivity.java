@@ -31,8 +31,8 @@ public class MainActivity extends Activity implements OnClickListener {
             public void onInit(int status) {
                 if(status != TextToSpeech.ERROR) {
                     speechEngine.setLanguage(Locale.US);
-                    speechEngine.setPitch(1.1f);
-                    speechEngine.setSpeechRate(.2f);
+                    speechEngine.setPitch(1.0f);
+                    speechEngine.setSpeechRate(1.0f);
                 }
             }
         });
@@ -57,6 +57,27 @@ public class MainActivity extends Activity implements OnClickListener {
         }
     }
 
+    public void sayBills(String twenties, String tens, String fives, String ones) {
+        speechEngine.speak(twenties.toString(), TextToSpeech.QUEUE_FLUSH, null);
+        pause(500);
+        speechEngine.speak(tens.toString(), TextToSpeech.QUEUE_ADD, null);
+        pause(500);
+        speechEngine.speak(fives.toString(), TextToSpeech.QUEUE_ADD, null);
+        pause(500);
+        speechEngine.speak(ones.toString(), TextToSpeech.QUEUE_ADD, null);
+        pause(500);
+    }
+
+    public void sayCoins(String quarters, String dimes, String nickels, String pennies) {
+        speechEngine.speak(quarters.toString(), TextToSpeech.QUEUE_ADD, null);
+        pause(500);
+        speechEngine.speak(dimes.toString(), TextToSpeech.QUEUE_ADD, null);
+        pause(500);
+        speechEngine.speak(nickels.toString(), TextToSpeech.QUEUE_ADD, null);
+        pause(500);
+        speechEngine.speak(pennies.toString(), TextToSpeech.QUEUE_ADD, null);
+        pause(500);
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -79,22 +100,21 @@ public class MainActivity extends Activity implements OnClickListener {
             ((TextView)findViewById(R.id.pennies)).setText(mChangeCalculator.updateText(mChangeCalculator.getPennies()));
 
             // say the numbers out loud
-            speechEngine.speak((mChangeCalculator.sayBills()), TextToSpeech.QUEUE_FLUSH, null);
-            pause(1000);
-            speechEngine.speak((mChangeCalculator.sayCoins()), TextToSpeech.QUEUE_ADD, null);
+            sayBills(mChangeCalculator.sayTwenties(), mChangeCalculator.sayTens(), mChangeCalculator.sayFives(), mChangeCalculator.sayOnes());
+            sayCoins(mChangeCalculator.sayQuarters(), mChangeCalculator.sayDimes(), mChangeCalculator.sayNickels(), mChangeCalculator.sayPennies());
 
             // make replay buttons work
             findViewById(R.id.buttonBillReplay).setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    speechEngine.speak((mChangeCalculator.sayBills()), TextToSpeech.QUEUE_FLUSH, null);
+                    sayBills(mChangeCalculator.sayTwenties(), mChangeCalculator.sayTens(), mChangeCalculator.sayFives(), mChangeCalculator.sayOnes());
                 }
             });
 
             findViewById(R.id.buttonCoinsReplay).setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    speechEngine.speak((mChangeCalculator.sayCoins()), TextToSpeech.QUEUE_FLUSH, null);
+                    sayCoins(mChangeCalculator.sayQuarters(), mChangeCalculator.sayDimes(), mChangeCalculator.sayNickels(), mChangeCalculator.sayPennies());
                 }
             });
         }

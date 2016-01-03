@@ -113,71 +113,107 @@ public class ChangeCalculator {
         }
     }
 
-    public String sayBills() {
-        String billString = "";
+    public String sayTwenties() {
+        String twentyString = "";
         if (Integer.parseInt(getTwenties()) > 1) {
-            billString = billString.concat(getTwenties() + " twenties, ");
+            twentyString = twentyString.concat(getTwenties() + " twenties, ");
         } else if (Integer.parseInt(getTwenties()) == 1) {
-            billString = billString.concat(getTwenties() + " twenty, ");
+            twentyString = twentyString.concat(getTwenties() + " twenty, ");
         } else {
-            billString = billString.concat("");
-        }
-        if (Integer.parseInt(getTens()) > 1) {
-            billString = billString.concat(getTens() + " tens, ");
-        } else if (Integer.parseInt(getTens()) == 1) {
-            billString = billString.concat(getTens() + " ten, ");
-        } else {
-            billString = billString.concat("");
-        }
-        if (Integer.parseInt(getFives()) > 1) {
-            billString = billString.concat(getFives() + " fives, ");
-        } else if (Integer.parseInt(getFives()) == 1) {
-            billString = billString.concat(getFives() + " five, ");
-        } else {
-            billString = billString.concat("");
-        }
-        if (Integer.parseInt(getOnes()) > 1) {
-            billString = billString.concat(getOnes() + " ones, ");
-        } else if (Integer.parseInt(getOnes()) == 1) {
-            billString = billString.concat(getOnes() + " one.");
-        } else {
-            billString = billString.concat("");
+            twentyString = twentyString.concat("");
         }
 
-        return billString;
+        return twentyString;
     }
 
-    public String sayCoins() {
-        String coinString = "";
-        if (Integer.parseInt(getQuarters()) > 1) {
-            coinString = coinString.concat(getQuarters() + " quarters, ");
-        } else if (Integer.parseInt(getQuarters()) == 1) {
-            coinString = coinString.concat(getQuarters() + " quarter, ");
+    public String sayTens() {
+        String tenString = "";
+        if (Integer.parseInt(getTens()) > 1) {
+            tenString = tenString.concat(getTens() + " tens, ");
+        } else if (Integer.parseInt(getTens()) == 1) {
+            tenString = tenString.concat(getTens() + " ten, ");
         } else {
-            coinString = coinString.concat("");
-        }
-        if (Integer.parseInt(getDimes()) > 1) {
-            coinString = coinString.concat(getDimes() + " dimes, ");
-        } else if (Integer.parseInt(getDimes()) == 1) {
-            coinString = coinString.concat(getDimes() + " dime, ");
-        } else {
-            coinString = coinString.concat("");
-        }
-        if (Integer.parseInt(getNickels()) > 1) {
-            coinString = coinString.concat(getNickels() + " nickles, ");
-        } else if (Integer.parseInt(getNickels()) == 1) {
-            coinString = coinString.concat(getNickels() + " nickle, ");
-        } else {
-            coinString = coinString.concat("");
-        }
-        if (Integer.parseInt(getPennies()) > 1) {
-            coinString = coinString.concat(getPennies() + " pennies, ");
-        } else if (Integer.parseInt(getPennies()) == 1) {
-            coinString = coinString.concat(getPennies() + " penny.");
-        } else {
-            coinString = coinString.concat("");
+            tenString = tenString.concat("");
         }
 
-        return coinString;
+        return tenString;
+    }
+
+    public String sayFives() {
+        String fiveString = "";
+        if (Integer.parseInt(getFives()) > 1) {
+            fiveString = fiveString.concat(getFives() + " fivess, ");
+        } else if (Integer.parseInt(getTwenties()) == 1) {
+            fiveString = fiveString.concat(getFives() + " five, ");
+        } else {
+            fiveString = fiveString.concat("");
+        }
+
+        return fiveString;
+    }
+
+    public String sayOnes() {
+        String oneString = "";
+        if (Integer.parseInt(getOnes()) > 1) {
+            oneString = oneString.concat(getOnes() + " ones, ");
+        } else if (Integer.parseInt(getOnes()) == 1) {
+            oneString = oneString.concat(getOnes() + " one, ");
+        } else {
+            oneString = oneString.concat("");
+        }
+
+        return oneString;
+    }
+
+    public String sayQuarters() {
+        String quarterString = "";
+        if (Integer.parseInt(getQuarters()) > 1) {
+            quarterString = quarterString.concat(getQuarters() + " quarters, ");
+        } else if (Integer.parseInt(getQuarters()) == 1) {
+            quarterString = quarterString.concat(getQuarters() + " quarter, ");
+        } else {
+            quarterString = quarterString.concat("");
+        }
+
+        return quarterString;
+    }
+
+    public String sayDimes() {
+        String dimeString = "";
+        if (Integer.parseInt(getDimes()) > 1) {
+            dimeString = dimeString.concat(getDimes() + " dimes, ");
+        } else if (Integer.parseInt(getDimes()) == 1) {
+            dimeString = dimeString.concat(getDimes() + " dime, ");
+        } else {
+            dimeString = dimeString.concat("");
+        }
+
+        return dimeString;
+    }
+
+    public String sayNickels() {
+        String nickelString = "";
+        if (Integer.parseInt(getNickels()) > 1) {
+            nickelString = nickelString.concat(getNickels() + " nickels, ");
+        } else if (Integer.parseInt(getNickels()) == 1) {
+            nickelString = nickelString.concat(getNickels() + " nickel, ");
+        } else {
+            nickelString = nickelString.concat("");
+        }
+
+        return nickelString;
+    }
+
+    public String sayPennies() {
+        String pennyString = "";
+        if (Integer.parseInt(getPennies()) > 1) {
+            pennyString = pennyString.concat(getPennies() + " pennies, ");
+        } else if (Integer.parseInt(getPennies()) == 1) {
+            pennyString = pennyString.concat(getPennies() + " penny, ");
+        } else {
+            pennyString = pennyString.concat("");
+        }
+
+        return pennyString;
     }
 }
