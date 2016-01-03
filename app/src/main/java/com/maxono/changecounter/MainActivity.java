@@ -61,38 +61,38 @@ public class MainActivity extends Activity implements OnClickListener {
     public void sayBills(String mTwenties, String twenties, String mTens, String tens, String mFives, String fives, String mOnes, String ones) {
         if (Integer.valueOf(mTwenties) > 0) {
             speechEngine.speak(twenties, TextToSpeech.QUEUE_FLUSH, null);
-            pause(1500);
+            pause(1000);
         }
         if (Integer.valueOf(mTens) > 0) {
             speechEngine.speak(tens, TextToSpeech.QUEUE_ADD, null);
-            pause(1500);
+            pause(1000);
         }
         if (Integer.valueOf(mFives) > 0) {
             speechEngine.speak(fives, TextToSpeech.QUEUE_ADD, null);
-            pause(1500);
+            pause(1000);
         }
         if (Integer.valueOf(mOnes) > 0) {
             speechEngine.speak(ones, TextToSpeech.QUEUE_ADD, null);
-            pause(1500);
+            pause(1000);
         }
     }
 
     public void sayCoins(String mQuarters, String quarters, String mDimes, String dimes, String mNickels, String nickels, String mPennies, String pennies) {
         if (Integer.valueOf(mQuarters) > 0) {
             speechEngine.speak(quarters, TextToSpeech.QUEUE_ADD, null);
-            pause(1500);
+            pause(1000);
         }
         if (Integer.valueOf(mDimes) > 0) {
             speechEngine.speak(dimes, TextToSpeech.QUEUE_ADD, null);
-            pause(1500);
+            pause(1000);
         }
         if (Integer.valueOf(mNickels) > 0) {
             speechEngine.speak(nickels, TextToSpeech.QUEUE_ADD, null);
-            pause(1500);
+            pause(1000);
         }
         if (Integer.valueOf(mPennies) > 0) {
             speechEngine.speak(pennies, TextToSpeech.QUEUE_ADD, null);
-            pause(1500);
+            pause(1000);
         }
     }
 
