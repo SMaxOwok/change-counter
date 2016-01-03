@@ -9,6 +9,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.speech.RecognizerIntent;
 import android.speech.tts.TextToSpeech;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
@@ -57,26 +58,42 @@ public class MainActivity extends Activity implements OnClickListener {
         }
     }
 
-    public void sayBills(String twenties, String tens, String fives, String ones) {
-        speechEngine.speak(twenties.toString(), TextToSpeech.QUEUE_FLUSH, null);
-        pause(500);
-        speechEngine.speak(tens.toString(), TextToSpeech.QUEUE_ADD, null);
-        pause(500);
-        speechEngine.speak(fives.toString(), TextToSpeech.QUEUE_ADD, null);
-        pause(500);
-        speechEngine.speak(ones.toString(), TextToSpeech.QUEUE_ADD, null);
-        pause(500);
+    public void sayBills(String mTwenties, String twenties, String mTens, String tens, String mFives, String fives, String mOnes, String ones) {
+        if (Integer.valueOf(mTwenties) > 0) {
+            speechEngine.speak(twenties, TextToSpeech.QUEUE_FLUSH, null);
+            pause(1500);
+        }
+        if (Integer.valueOf(mTens) > 0) {
+            speechEngine.speak(tens, TextToSpeech.QUEUE_ADD, null);
+            pause(1500);
+        }
+        if (Integer.valueOf(mFives) > 0) {
+            speechEngine.speak(fives, TextToSpeech.QUEUE_ADD, null);
+            pause(1500);
+        }
+        if (Integer.valueOf(mOnes) > 0) {
+            speechEngine.speak(ones, TextToSpeech.QUEUE_ADD, null);
+            pause(1500);
+        }
     }
 
-    public void sayCoins(String quarters, String dimes, String nickels, String pennies) {
-        speechEngine.speak(quarters.toString(), TextToSpeech.QUEUE_ADD, null);
-        pause(500);
-        speechEngine.speak(dimes.toString(), TextToSpeech.QUEUE_ADD, null);
-        pause(500);
-        speechEngine.speak(nickels.toString(), TextToSpeech.QUEUE_ADD, null);
-        pause(500);
-        speechEngine.speak(pennies.toString(), TextToSpeech.QUEUE_ADD, null);
-        pause(500);
+    public void sayCoins(String mQuarters, String quarters, String mDimes, String dimes, String mNickels, String nickels, String mPennies, String pennies) {
+        if (Integer.valueOf(mQuarters) > 0) {
+            speechEngine.speak(quarters, TextToSpeech.QUEUE_ADD, null);
+            pause(1500);
+        }
+        if (Integer.valueOf(mDimes) > 0) {
+            speechEngine.speak(dimes, TextToSpeech.QUEUE_ADD, null);
+            pause(1500);
+        }
+        if (Integer.valueOf(mNickels) > 0) {
+            speechEngine.speak(nickels, TextToSpeech.QUEUE_ADD, null);
+            pause(1500);
+        }
+        if (Integer.valueOf(mPennies) > 0) {
+            speechEngine.speak(pennies, TextToSpeech.QUEUE_ADD, null);
+            pause(1500);
+        }
     }
 
     @Override
@@ -100,21 +117,21 @@ public class MainActivity extends Activity implements OnClickListener {
             ((TextView)findViewById(R.id.pennies)).setText(mChangeCalculator.updateText(mChangeCalculator.getPennies()));
 
             // say the numbers out loud
-            sayBills(mChangeCalculator.sayTwenties(), mChangeCalculator.sayTens(), mChangeCalculator.sayFives(), mChangeCalculator.sayOnes());
-            sayCoins(mChangeCalculator.sayQuarters(), mChangeCalculator.sayDimes(), mChangeCalculator.sayNickels(), mChangeCalculator.sayPennies());
+            sayBills(mChangeCalculator.getTwenties(), mChangeCalculator.sayTwenties(), mChangeCalculator.getTens(), mChangeCalculator.sayTens(), mChangeCalculator.getFives(), mChangeCalculator.sayFives(), mChangeCalculator.getOnes(), mChangeCalculator.sayOnes());
+            sayCoins(mChangeCalculator.getQuarters(), mChangeCalculator.sayQuarters(), mChangeCalculator.getDimes(), mChangeCalculator.sayDimes(), mChangeCalculator.getNickels(), mChangeCalculator.sayNickels(), mChangeCalculator.getPennies(), mChangeCalculator.sayPennies());
 
             // make replay buttons work
             findViewById(R.id.buttonBillReplay).setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    sayBills(mChangeCalculator.sayTwenties(), mChangeCalculator.sayTens(), mChangeCalculator.sayFives(), mChangeCalculator.sayOnes());
+                    sayBills(mChangeCalculator.getTwenties(), mChangeCalculator.sayTwenties(), mChangeCalculator.getTens(), mChangeCalculator.sayTens(), mChangeCalculator.getFives(), mChangeCalculator.sayFives(), mChangeCalculator.getOnes(), mChangeCalculator.sayOnes());
                 }
             });
 
             findViewById(R.id.buttonCoinsReplay).setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    sayCoins(mChangeCalculator.sayQuarters(), mChangeCalculator.sayDimes(), mChangeCalculator.sayNickels(), mChangeCalculator.sayPennies());
+                    sayCoins(mChangeCalculator.getQuarters(), mChangeCalculator.sayQuarters(), mChangeCalculator.getDimes(), mChangeCalculator.sayDimes(), mChangeCalculator.getNickels(), mChangeCalculator.sayNickels(), mChangeCalculator.getPennies(), mChangeCalculator.sayPennies());
                 }
             });
         }

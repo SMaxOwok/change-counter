@@ -1,6 +1,8 @@
 package com.maxono.changecounter;
 
 
+import android.util.Log;
+
 /**
  * Created by maxono on 12/2/15.
  */
@@ -20,7 +22,7 @@ public class ChangeCalculator {
 
     // Methods
     public ChangeCalculator(String changeDue) {  // determine how many of each currency type
-        baseChange = Double.parseDouble(changeDue) * 100;
+        baseChange = Math.ceil(Double.valueOf(changeDue) * 100);
         remainingChange = baseChange.intValue();
 
         if ((remainingChange / 2000) >= 1) {
@@ -142,8 +144,8 @@ public class ChangeCalculator {
     public String sayFives() {
         String fiveString = "";
         if (Integer.parseInt(getFives()) > 1) {
-            fiveString = fiveString.concat(getFives() + " fivess, ");
-        } else if (Integer.parseInt(getTwenties()) == 1) {
+            fiveString = fiveString.concat(getFives() + " fives, ");
+        } else if (Integer.parseInt(getFives()) == 1) {
             fiveString = fiveString.concat(getFives() + " five, ");
         } else {
             fiveString = fiveString.concat("");
